@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+
+    <KatBlock
+      :catInfoArray="[
+        {
+          url:
+            'https://www.soydecampo.com/12562-large_default/aceite-sdf-utto-en-5-litros.jpg',
+          alt: 'image1',
+        },
+      ]"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from "vue";
+import KatBlock from "@/components/KatBlock.vue";
 
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld,
+    KatBlock,
   },
 });
 </script>

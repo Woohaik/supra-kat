@@ -1,0 +1,40 @@
+.cat-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+.cat-square {
+    position: relative;
+    border: 2px solid black;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 180px;
+    max-height: 300px;
+    background-color: rgba(150, 150, 150, 0.3);
+    z-index: 0;
+
+    img {
+        z-index: 1;
+        transition: transform 0.4s;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &.loading {
+        &::after {
+            position: absolute;
+            content: "";
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd33wubrfki0l68.cloudfront.net%2F1868fe8dec771061bd95b0f432ef0a41835c4674%2F11fab%2Fimg%2Floading.gif&f=1&nofb=1);
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    }
+}
