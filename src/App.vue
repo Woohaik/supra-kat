@@ -1,11 +1,16 @@
 
 <script lang="ts">
-import { Store } from "@/store";
+import { Store } from "@/types";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 import { ActionTypes } from "./types";
 
+import NavButtons from "@/components/NavButtons.vue";
+
 export default defineComponent({
+  components: {
+    NavButtons,
+  },
   setup() {
     const store: Store = useStore();
     const fetchKatGroup = () => store.dispatch(ActionTypes.fetchKatGroup);
@@ -27,9 +32,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/favorites">Favorites</router-link>
-  </div>
+  <NavButtons />
   <router-view />
 </template>

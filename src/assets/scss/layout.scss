@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap");
 html,
 body {
     width: 100%;
@@ -7,15 +8,27 @@ body {
     background-color: $bg-color;
 }
 
+.wrapper {
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Londrina Solid", cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 25px;
+    letter-spacing: 1.5px;
+    @extend .wrapper;
 }
 
-.wrapper {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 38px;
 }
