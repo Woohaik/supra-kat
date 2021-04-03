@@ -17,7 +17,7 @@ const mutations: MutationTree<State> & Mutations = {
 
 const actions: ActionTree<State, State> & Actions = {
   async fetchKatGroup({ commit }) {
-    const theKatGroup = await axios.get("https://api.thecatapi.com/v1/images/search?limit=9")
+    const theKatGroup = await axios.get("https://api.thecatapi.com/v1/images/search?limit=12")
     console.log(theKatGroup.data);
     
     const newKats = theKatGroup.data.map((kat: any) => ({ url: kat.url, id: kat.id }));

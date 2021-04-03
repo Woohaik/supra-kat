@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useStore } from "vuex";
-import { computed, defineComponent, PropType, ref } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 import KatSquare from "./KatSquare.vue";
-import { ActionTypes } from "@/types";
 import { Store } from "@/store";
 
 export default defineComponent({
@@ -18,22 +17,16 @@ export default defineComponent({
   },
   setup() {
     const store: Store = useStore();
-    const fetchKatGroup = () => store.dispatch(ActionTypes.fetchKatGroup);
+
     const getAllKats = computed(() => store.getters.getKats);
-    return { fetchKatGroup, getAllKats };
-  },
-  created() {
-    this.fetchKatGroup();
+
+    return { getAllKats };
   },
 });
 </script>
 
 <template>
   <div class="cat-block wrapper">
-    <KatSquare
-      :catInfo="kat"
-      v-for="(kat, index) in getAllKats"
-      :key="index"
-    />
+    <KatSquare :catInfo="kat" v-for="(kat, index) in getAllKats" :key="index" />
   </div>
 </template>
