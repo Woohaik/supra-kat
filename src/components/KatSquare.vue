@@ -1,6 +1,37 @@
+
+<script lang="ts">
+import { useStore } from "vuex";
+import { Store, MutationTypes } from "@/types";
+import { defineComponent, PropType, ref } from "vue";
+export default defineComponent({
+  name: "Kat Square",
+  props: {
+    catInfo: {
+      type: Object as PropType<{ url: string; id: string; fav: boolean }>,
+      required: true,
+    },
+  },
+  setup(props) {
+    const store: Store = useStore();
+    const loading = ref(true);
+    const onImgLoad = () => (loading.value = false);
+
+    const FAV_KAT = () => store.commit(MutationTypes.FAV_KAT, props.catInfo.id);
+    const UNFAV_KAT = () => {
+      store.commit(MutationTypes.UNFAV_KAT, props.catInfo.id);
+    };
+    const FAV_UNFAV = () => {
+      props.catInfo.fav ? UNFAV_KAT() : FAV_KAT();
+    };
+
+    return { onImgLoad, loading, FAV_UNFAV };
+  },
+});
+</script>
+
 <template>
   <div
-    @click="onClickHeart"
+    @click="FAV_UNFAV"
     class="cat-square"
     :class="[loading ? 'loading' : '']"
   >
@@ -26,8 +57,7 @@
       </g>
     </svg>
     <svg
-      :class="['red-heart', isLiked ? 'red-heart-liked' : '']"
-      @click="onClickHeart"
+      :class="['red-heart', catInfo.fav ? 'red-heart-liked' : '']"
       version="1.1"
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +70,6 @@
       <g>
         <path
           fill="red"
-          :class="['red-heart', isLiked ? 'red-heart-liked' : '']"
           d="M368.459,20.727c-44.919,0-85.82,20.784-112.458,54.367c-26.583-33.509-67.448-54.367-112.459-54.367
 			C64.392,20.727,0,85.119,0,164.267c0,91.398,58.04,172.206,124.794,234.054c60.426,55.986,120.038,89.32,122.546,90.711
 			c2.693,1.495,5.677,2.242,8.661,2.242c2.983,0,5.968-0.747,8.661-2.242c2.508-1.391,62.121-34.727,122.546-90.711
@@ -48,26 +77,5 @@
         />
       </g>
     </svg>
-    {{ isLiked }}
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
-export default defineComponent({
-  name: "Kat Square",
-  props: {
-    catInfo: {
-      type: Object as PropType<{ url: string; id: string }>,
-      required: true,
-    },
-  },
-  setup() {
-    const loading = ref(true);
-    const onImgLoad = () => (loading.value = false);
-    const isLiked = ref(false);
-    const onClickHeart = () => (isLiked.value = !isLiked.value);
-    return { onImgLoad, loading, isLiked, onClickHeart };
-  },
-});
-</script>

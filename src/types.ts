@@ -1,7 +1,6 @@
 
-import { ActionContext, CommitOptions, DispatchOptions, createStore, MutationTree, Store as VuexStore } from "vuex";
+import { ActionContext, CommitOptions, DispatchOptions, Store as VuexStore } from "vuex";
 export interface State {
-    favKats: any[];
     kats: any[];
 }
 export type Getters = {
@@ -9,10 +8,10 @@ export type Getters = {
     getFavKats(state: State): any[];
 }
 
-
 export enum MutationTypes {
     ADD_KATS = "ADD_KATS",
-    ADD_FAVORITE_KAT = "ADD_FAVORITE_KAT"
+    FAV_KAT = "FAV_KAT",
+    UNFAV_KAT = "UNFAV_KAT"
 }
 
 export enum ActionTypes {
@@ -23,6 +22,8 @@ export enum ActionTypes {
 // Mutation Types
 export type Mutations<S = State> = {
     [MutationTypes.ADD_KATS](state: S, payload: any): void;
+    [MutationTypes.FAV_KAT](state: S, payload: any): void;
+    [MutationTypes.UNFAV_KAT](state: S, payload: any): void;
 }
 
 type AugmentedActionContext = {

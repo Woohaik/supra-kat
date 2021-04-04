@@ -4,7 +4,6 @@ import { Actions, Getters, Mutations, MutationTypes, State } from "@/types";
 
 // Set State
 const state: State = {
-  favKats: [],
   kats: []
 }
 
@@ -12,15 +11,29 @@ const state: State = {
 const mutations: MutationTree<State> & Mutations = {
   ADD_KATS({ kats }, payload) {
     kats.push(...payload);
+  },
+  FAV_KAT({ kats }, payload) {
+    const tKat = kats.filter(kat => kat.id === payload);
+    tKat.forEach(kat => {
+      kat.fav = true;
+      localStorage.setItem(`${kat.id}`, "");
+    })
+
+  },
+  UNFAV_KAT({ kats }, payload) {
+    const tKat = kats.filter(kat => kat.id === payload);
+    tKat.forEach(kat => {
+      kat.fav = false;
+      localStorage.removeItem(`${kat.id}`);
+    })
+
   }
 }
 
 const actions: ActionTree<State, State> & Actions = {
   async fetchKatGroup({ commit }) {
     const theKatGroup = await axios.get("https://api.thecatapi.com/v1/images/search?limit=12")
-    console.log(theKatGroup.data);
-
-    const newKats = theKatGroup.data.map((kat: any) => ({ url: kat.url, id: kat.id }));
+    const newKats = theKatGroup.data.map((kat: any) => ({ url: kat.url, id: kat.id, fav: !!localStorage.getItem(`${kat.id}`) }));
     commit(MutationTypes.ADD_KATS, newKats);
   }
 }
@@ -30,7 +43,7 @@ const getters: Getters = {
     return state.kats;
   },
   getFavKats(state) {
-    return state.favKats
+    return state.kats.filter(kat => !!kat.fav)
   }
 }
 
