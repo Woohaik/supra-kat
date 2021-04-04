@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import KatBlock from "@/components/KatBlock.vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Favorites",
   components: {
     KatBlock,
   },
@@ -12,6 +12,6 @@ export default defineComponent({
 
 <template>
   <div class="home">
-    <KatBlock :favs="false" />
+    <KatBlock :favs="true" />
   </div>
 </template>
