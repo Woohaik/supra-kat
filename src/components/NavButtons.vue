@@ -9,7 +9,7 @@ export default defineComponent({});
     <div class="buttons">
       <router-link to="/"> <div class="item">Home</div> </router-link>
       <router-link to="/favorites">
-        <div class="item">Favorites (100)</div>
+        <div class="item">Favorites (1000)</div>
       </router-link>
     </div>
   </div>

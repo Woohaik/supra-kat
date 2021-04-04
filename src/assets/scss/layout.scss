@@ -9,7 +9,7 @@ body {
 }
 
 .wrapper {
-    width: 100%;
+    width: 95%;
     max-width: 1350px;
     margin: 0 auto;
 }
@@ -27,6 +27,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include breakpoint(xs) {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
 }
 
 h1 {

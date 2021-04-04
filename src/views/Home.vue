@@ -12,14 +12,6 @@ export default defineComponent({
 
 <template>
   <div class="home">
-    <KatBlock
-      :catInfoArray="[
-        {
-          url:
-            'https://www.soydecampo.com/12562-large_default/aceite-sdf-utto-en-5-litros.jpg',
-          alt: 'image1',
-        },
-      ]"
-    />
+    <KatBlock  />
   </div>
 </template>

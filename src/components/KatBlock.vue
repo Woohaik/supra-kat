@@ -6,12 +6,6 @@ import { Store } from "@/types";
 
 export default defineComponent({
   name: "Kat Square Block",
-  props: {
-    catInfoArray: {
-      type: Object as PropType<{ url: string; alt: string }[]>,
-      required: true,
-    },
-  },
   components: {
     KatSquare,
   },
