@@ -6,6 +6,7 @@ body {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
+    text-align: center;
     background-color: $bg-color;
 }
 
@@ -25,11 +26,9 @@ body {
 }
 
 #nav {
-    display: flex;
-    align-items: center;
+    @include flex(false, false, space-between, center);
     z-index: 1;
     background-color: $bg-color;
-    justify-content: space-between;
     @include breakpoint(xs) {
         flex-direction: column;
         margin-bottom: 15px;
@@ -37,13 +36,7 @@ body {
 }
 
 h1 {
+    @include flex(false, false, flex-start, center);
     font-size: 38px;
-    display: flex;
     height: fit-content;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.home {
-    text-align: center;
 }

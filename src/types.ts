@@ -39,7 +39,7 @@ type AugmentedActionContext = {
 export interface Actions {
     [ActionTypes.fetchKatGroup](
         { commit }: AugmentedActionContext,
-        payload?: any
+        payload?: string
     ): void
 }
 

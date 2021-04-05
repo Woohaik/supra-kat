@@ -1,0 +1,12 @@
+@mixin flex($column, $wrap, $content, $items) {
+    display: flex;
+    @if $column {
+      flex-direction: column;
+    }
+    @if $wrap {
+      flex-wrap: wrap;
+    }
+    justify-content: $content;
+    align-items: $items;
+  }
+  
