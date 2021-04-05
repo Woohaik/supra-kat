@@ -14,13 +14,16 @@ export default defineComponent({
   setup(props) {
     const store: Store = useStore();
     const loading = ref(true);
-    const onImgLoad = () => (loading.value = false);
+    const onImgLoad = (): void => {
+      loading.value = false;
+    };
 
-    const FAV_KAT = () => store.commit(MutationTypes.FAV_KAT, props.catInfo.id);
-    const UNFAV_KAT = () => {
+    const FAV_KAT = (): void =>
+      store.commit(MutationTypes.FAV_KAT, props.catInfo.id);
+    const UNFAV_KAT = (): void => {
       store.commit(MutationTypes.UNFAV_KAT, props.catInfo.id);
     };
-    const FAV_UNFAV = () => {
+    const FAV_UNFAV = (): void => {
       props.catInfo.fav ? UNFAV_KAT() : FAV_KAT();
     };
 

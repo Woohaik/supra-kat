@@ -7,11 +7,10 @@ export default defineComponent({
   },
   setup() {
     const winScroll = ref(0);
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       winScroll.value = window.scrollY;
     };
-    const windowsScrollTo0 = () => window.scrollTo(0, 0);
-
+    const windowsScrollTo0 = (): void => window.scrollTo(0, 0);
     return { winScroll, handleScroll, windowsScrollTo0 };
   },
 });
