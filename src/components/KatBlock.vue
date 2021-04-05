@@ -1,8 +1,9 @@
 <script lang="ts">
 import { useStore } from "vuex";
-import { computed, defineComponent } from "vue";
+import { computed, ComputedRef, defineComponent } from "vue";
+import { kat, Store } from "@/types";
+
 import KatSquare from "./KatSquare.vue";
-import { Store } from "@/types";
 
 export default defineComponent({
   name: "Kat Square Block",
@@ -18,9 +19,13 @@ export default defineComponent({
   },
   setup(props) {
     const store: Store = useStore();
-    const getAllKats = computed(() => store.getters.getKats);
-    const getFavKats = computed(() => store.getters.getFavKats);
-    const katsToShow = props.favs ? getFavKats : getAllKats;
+    const getFavKats: ComputedRef<kat[]> = computed(
+      () => store.getters.getFavKats
+    );
+    const getAllKats: ComputedRef<kat[]> = computed(
+      () => store.getters.getKats
+    );
+    const katsToShow: ComputedRef<kat[]> = props.favs ? getFavKats : getAllKats;
     return { katsToShow };
   },
 });

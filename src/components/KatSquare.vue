@@ -14,13 +14,16 @@ export default defineComponent({
   setup(props) {
     const store: Store = useStore();
     const loading = ref(true);
-    const onImgLoad = () => (loading.value = false);
+    const onImgLoad = (): void => {
+      loading.value = false;
+    };
 
-    const FAV_KAT = () => store.commit(MutationTypes.FAV_KAT, props.catInfo.id);
-    const UNFAV_KAT = () => {
+    const FAV_KAT = (): void =>
+      store.commit(MutationTypes.FAV_KAT, props.catInfo.id);
+    const UNFAV_KAT = (): void => {
       store.commit(MutationTypes.UNFAV_KAT, props.catInfo.id);
     };
-    const FAV_UNFAV = () => {
+    const FAV_UNFAV = (): void => {
       props.catInfo.fav ? UNFAV_KAT() : FAV_KAT();
     };
 
@@ -30,11 +33,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    @click="FAV_UNFAV"
-    class="cat-square"
-    :class="[loading ? 'loading' : '']"
-  >
+  <div @click="FAV_UNFAV" class="cat-square">
+    <div :class="[loading ? 'lds-dual-ring' : '']"></div>
     <img @load="onImgLoad" :src="catInfo.url" :alt="`cat-${catInfo.id}`" />
     <svg
       version="1.1"

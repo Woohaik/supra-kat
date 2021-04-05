@@ -1,11 +1,12 @@
 
 import { ActionContext, CommitOptions, DispatchOptions, Store as VuexStore } from "vuex";
 export interface State {
-    kats: any[];
+    kats: kat[];
 }
+
 export type Getters = {
-    getKats(state: State): any[];
-    getFavKats(state: State): any[];
+    getKats(state: State): kat[];
+    getFavKats(state: State): kat[];
 }
 
 export enum MutationTypes {
@@ -21,9 +22,9 @@ export enum ActionTypes {
 
 // Mutation Types
 export type Mutations<S = State> = {
-    [MutationTypes.ADD_KATS](state: S, payload: any): void;
-    [MutationTypes.FAV_KAT](state: S, payload: any): void;
-    [MutationTypes.UNFAV_KAT](state: S, payload: any): void;
+    [MutationTypes.ADD_KATS](state: S, payload: kat[]): void;
+    [MutationTypes.FAV_KAT](state: S, payload: string): void;
+    [MutationTypes.UNFAV_KAT](state: S, payload: string): void;
 }
 
 type AugmentedActionContext = {
@@ -63,3 +64,12 @@ export type Store = Omit<
             [K in keyof Getters]: ReturnType<Getters[K]>
         }
     }
+
+
+
+
+export interface kat {
+    url: string;
+    id: string;
+    fav: boolean;
+}

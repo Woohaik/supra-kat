@@ -4,12 +4,12 @@ import { Store } from "@/types";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 import { ActionTypes } from "./types";
-
 import NavButtons from "@/components/NavButtons.vue";
-
+import TopArrow from "@/components/ToTop.vue";
 export default defineComponent({
   components: {
     NavButtons,
+    TopArrow,
   },
   setup() {
     const store: Store = useStore();
@@ -34,4 +34,5 @@ export default defineComponent({
 <template>
   <NavButtons />
   <router-view />
+  <TopArrow />
 </template>
