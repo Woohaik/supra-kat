@@ -40,26 +40,13 @@
             height: 0px;
         }
         &.red-heart-liked {
-            bottom: 27.5px;
-            right: 27.5px;
-            width: 45px;
-            height: 45px;
+            bottom: 28px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
         }
     }
-    &.loading {
-        &::after {
-            position: absolute;
-            content: "";
-            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd33wubrfki0l68.cloudfront.net%2F1868fe8dec771061bd95b0f432ef0a41835c4674%2F11fab%2Fimg%2Floading.gif&f=1&nofb=1);
-            width: 100%;
-            height: 100%;
-            background-repeat: no-repeat;
 
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-    }
     &:hover {
         svg {
             transform: scale(1.1);
@@ -99,5 +86,75 @@
         background: white;
         color: #505096;
         font-size: 20px;
+    }
+}
+
+.no-kats {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 80px;
+    height: 80px;
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.to-top {
+    position: fixed;
+    bottom: -80px;
+    right: 150px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.5s;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+    height: 70px;
+    width: 50px;
+    background: white;
+    .arrow {
+        height: 50px;
+        width: 40px;
+    }
+    &:hover {
+        transform: scale(1.05);
+    }
+
+
+    @include breakpoint(md){
+        height: 50px;
+        width: 40px;
+        right: 100px;
+        .arrow {
+            height: 40px;
+            width: 32px;
+        }
+
     }
 }

@@ -3,6 +3,7 @@ import { ActionContext, CommitOptions, DispatchOptions, Store as VuexStore } fro
 export interface State {
     kats: any[];
 }
+
 export type Getters = {
     getKats(state: State): any[];
     getFavKats(state: State): any[];

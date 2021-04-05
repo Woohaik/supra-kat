@@ -30,11 +30,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    @click="FAV_UNFAV"
-    class="cat-square"
-    :class="[loading ? 'loading' : '']"
-  >
+  <div @click="FAV_UNFAV" class="cat-square">
+    <div :class="[loading ? 'lds-dual-ring' : '']"></div>
     <img @load="onImgLoad" :src="catInfo.url" :alt="`cat-${catInfo.id}`" />
     <svg
       version="1.1"
