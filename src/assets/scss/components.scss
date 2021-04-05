@@ -146,8 +146,7 @@
         transform: scale(1.05);
     }
 
-
-    @include breakpoint(md){
+    @include breakpoint(md) {
         height: 50px;
         width: 40px;
         right: 100px;
@@ -155,6 +154,12 @@
             height: 40px;
             width: 32px;
         }
-
     }
+}
+
+#supra {
+    width: 70px;
+    height: 70px;
+    margin-left: -18px;
+    margin-bottom:5px;
 }

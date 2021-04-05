@@ -38,6 +38,10 @@ body {
 
 h1 {
     font-size: 38px;
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .home {
