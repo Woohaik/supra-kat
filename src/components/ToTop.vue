@@ -15,13 +15,11 @@ export default defineComponent({
   },
 });
 </script>
-
-
 <template>
   <div
     @click="windowsScrollTo0"
     class="to-top"
-    :style="[winScroll > 50 ? `bottom: -5px` : ``]"
+    :style="[winScroll > 50 ? `bottom: -5px` : `bottom: -80px`]"
   >
     <svg
       class="arrow"
