@@ -11,7 +11,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="home">
+  <div>
     <KatBlock :favs="false" />
   </div>
 </template>

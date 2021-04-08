@@ -18,9 +18,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="home">
+  <div>
     <KatBlock :favs="true" />
-
     <img
       v-if="getFavKats.length === 0"
       class="no-kats"
